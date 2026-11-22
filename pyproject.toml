@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telexam"
+version = "1.0.0"
+description = "A Telegram bot for timed multiple-choice tests: shuffled answers, a time limit, results with mistakes, CSV for Excel"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Edward Lik" }]
+requires-python = ">=3.10"
+dependencies = ["pyTelegramBotAPI>=4.14", "python-dotenv>=1.0"]
+keywords = ["telegram", "bot", "quiz", "exam", "test", "telebot", "sqlite"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Communications :: Chat",
+    "Topic :: Education :: Testing",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+telexam = "telexam.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mredwardlik/telexam"
+Issues = "https://github.com/mredwardlik/telexam/issues"
+
+[tool.setuptools]
+packages = ["telexam"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "telexam"]
+addopts = "--doctest-modules --ignore=telexam/__main__.py"
